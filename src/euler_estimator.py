@@ -1,27 +1,35 @@
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 class EulerEstimator():
     
     def __init__(self, derivative):
         self.derivative = derivative
     
-    def calc_derivative_at_point(self, coordinates):
-        x = coordinates[0]
-        return self.derivative(x)
+    def calc_derivative_at_point(self, coords):
+        result = {}
+        for key in self.derivative:
+            result[key] = self.derivative[key](coords[0], coords[1])
+        return result
     
     def step_forward(self, point, step_size):
-        x = point[0]
-        y = point[1]
-        new_point = (x + step_size, y + self.calc_derivative_at_point(point)*step_size)
+        t = point[0]
+        x = point[1]
+        point_deriv = self.calc_derivative_at_point(point)
+        new_x = {}
+        for key in x:
+            new_x[key] = x[key] + (point_deriv[key] * step_size)
+        new_point = (t + step_size, new_x)
         return new_point
     
     def calc_estimated_points(self, point, step_size, num_steps):
-        print(point)
+        point_list = []
+        point_list.append(point)
         for i in range(num_steps):
-            print(self.step_forward(point, step_size))
-            point = self.step_forward(point, step_size)
-        return
-    
+            next_point = self.step_forward(point, step_size)
+            point_list.append(next_point)
+            point = next_point
+        return point_list
+    '''
     def plot(self, point, step_size, num_steps):
         x_coords = [point[0]]
         y_coords = [point[1]]
@@ -35,3 +43,5 @@ class EulerEstimator():
         plt.xlabel('x')
         plt.ylabel('y')
         plt.savefig('plot.png')
+    '''
+
