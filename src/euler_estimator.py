@@ -1,4 +1,4 @@
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 class EulerEstimator():
     
@@ -29,19 +29,25 @@ class EulerEstimator():
             point_list.append(next_point)
             point = next_point
         return point_list
-    '''
-    def plot(self, point, step_size, num_steps):
-        x_coords = [point[0]]
-        y_coords = [point[1]]
-        for _ in range(num_steps + 1):
-        # +1 to show the last point on the graph more clearly
+
+    def plot(self, point, step_size, max_value):
+        t_list = []
+        list_dict = {}
+        for key in point[1]:
+            list_dict[key] = []
+        while True:
+            t = point[0]
+            if t > max_value:
+                break
+            t_list.append(t)
+            x = point[1]
+            for key in x:
+                list_dict[key].append(x[key])
             point = self.step_forward(point, step_size)
-            x_coords.append(point[0])
-            y_coords.append(point[1])
+            print(point)
         plt.style.use('bmh')
-        plt.plot(x_coords, y_coords)
-        plt.xlabel('x')
-        plt.ylabel('y')
+        for key in list_dict:
+            plt.plot(t_list, list_dict[key])
         plt.savefig('plot.png')
-    '''
+
 

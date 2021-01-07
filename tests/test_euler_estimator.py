@@ -25,7 +25,7 @@ derivatives = {
 euler = EulerEstimator(derivatives)
 initial_values = {'A': 0, 'B': 0, 'C': 0}
 initial_point = (0, initial_values)
-
+'''
 assert euler.calc_derivative_at_point(initial_point) == {'A': 1, 'B': 0, 'C': 0}
 
 point_2 = euler.step_forward(initial_point, 0.1)
@@ -48,3 +48,5 @@ assert est_list == [
    (5.6, {'A': 13.85, 'B': 2.35, 'C': -11.8})
 ]
 print("PASSED")
+'''
+euler.plot(initial_point, 0.01, 5)
