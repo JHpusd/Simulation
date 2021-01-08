@@ -44,7 +44,6 @@ class EulerEstimator():
             for key in x:
                 list_dict[key].append(x[key])
             point = self.step_forward(point, step_size)
-            print(point)
         plt.style.use('bmh')
         for key in list_dict:
             plt.plot(t_list, list_dict[key])
