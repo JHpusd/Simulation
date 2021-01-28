@@ -12,19 +12,14 @@ t = []
 for i in range(501):
     t.append(i)
 
-def num_copy(num):
-    copy = 0
-    copy += num
-    return copy
-
 for _ in range(len(t)):
     s_list.append(susceptible)
     i_list.append(infected)
     r_list.append(recovered)
 
-    s_copy = num_copy(susceptible)
-    i_copy = num_copy(infected)
-    r_copy = num_copy(recovered)
+    s_copy = susceptible
+    i_copy = infected
+    r_copy = recovered
 
     susceptible += -0.0003*s_copy*i_copy
     infected += (0.0003*s_copy*i_copy) - (0.02*i_copy)
