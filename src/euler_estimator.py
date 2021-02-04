@@ -22,8 +22,7 @@ class EulerEstimator():
         return new_point
     
     def calc_estimated_points(self, point, step_size, max_value):
-        point_list = []
-        point_list.append(point)
+        point_list = [point]
         counter = 0
         while counter < max_value:
             next_point = self.step_forward(point, step_size)
