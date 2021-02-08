@@ -1,6 +1,19 @@
+import sys
+sys.path.append('src')
+from euler_estimator import *
 import matplotlib.pyplot as plt
-plt.style.use('bmh')
 
+rates = {
+    's': (lambda t,x: -0.0003 * x['s'] * x['i']),
+    'i': (lambda t,x: (0.0003 * x['s'] * x['i']) - (0.02 * x['i'])),
+    'r': (lambda t,x: 0.02 * x['i'])}
+model = EulerEstimator(rates)
+init_vals = {'s': 1000, 'i': 1, 'r': 0}
+init_point = (0, init_vals)
+
+model.plot(init_point, 1, 500, "sir_model")
+
+'''
 susceptible = 1000
 infected = 1
 recovered = 0
@@ -32,3 +45,4 @@ plt.legend(loc='center right')
 plt.xlabel('time')
 plt.ylabel('people')
 plt.savefig('sir_model.png')
+'''

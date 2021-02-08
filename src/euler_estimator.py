@@ -31,14 +31,14 @@ class EulerEstimator():
             counter += step_size
         return point_list
 
-    def plot(self, point, step_size, max_value):
+    def plot(self, point, step_size, max_value, plot_name):
         plt.style.use('bmh')
         points = self.calc_estimated_points(point, step_size, max_value)
         t_list = [point[0] for point in points]
         values = [point[1] for point in points]
         for key in point[1]:
             plt.plot(t_list, [vals[key] for vals in values], label=key)
-        plt.legend(loc="upper left")
-        plt.savefig("plot.png")
+        plt.legend(loc="upper right")
+        plt.savefig(plot_name + ".png")
 
 
