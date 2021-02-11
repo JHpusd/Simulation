@@ -11,7 +11,7 @@ model = EulerEstimator(rates)
 init_vals = {'s': 1000, 'i': 1, 'r': 0}
 init_point = (0, init_vals)
 
-model.plot(init_point, 1, 500, "sir_model")
+model.plot(init_point, 1, 500, "sir_model", "upper right")
 
 '''
 susceptible = 1000

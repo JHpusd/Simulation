@@ -10,5 +10,5 @@ model = EulerEstimator(rates)
 initial_vals = {'deer': 100, 'wolves': 10}
 init_point = (0, initial_vals)
 
-model.plot(init_point, 0.001, 100, "predator_prey_model")
+model.plot(init_point, 0.001, 100, "predator_prey_model", "upper right")
 
