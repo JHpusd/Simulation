@@ -93,6 +93,8 @@ stim_list = [stim(t) for t in t_list]
 plt.style.use('bmh')
 plt.plot(t_list, [point[1]['V'] for point in point_list], label="Voltage")
 plt.plot(t_list, stim_list, label="Stimulus", lw=0.4)
+plt.ylabel('mV')
+plt.xlabel('Time')
 plt.legend(loc="upper left")
 plt.savefig("hodgkin_huxley_neuron_model.png")
 
